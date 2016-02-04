@@ -27,6 +27,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def logout
+    session.clear
+    redirect_to root_path
+  end
+
   private
 
   def user_params
