@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   authenticated :user do
     root 'items#index', as: :authenticated_root
   end
-  root 'users#new'
+  root 'users#welcome'
 
   resources :items
   resources :users
