@@ -9,7 +9,21 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to "/"
     else
-      redirect_to new_user_path
+      "error"
+    end
+  end
+
+  def login
+    @user = User.new
+  end
+
+  def auth
+    user = User.find_by(email: params[:email])
+    if user
+      session[:user_id] = user.id
+      redirect_to root_path
+    else
+      redirect_to login_path
     end
   end
 
