@@ -1,0 +1,6 @@
+<h1>Create New Todo Item</h1>
+
+<%= form_for @item do |f|%>
+  <%= f.text_field :text %>
+  <%= f.submit "Submit" %>
+<% end %>
