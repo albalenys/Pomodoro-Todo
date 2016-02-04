@@ -2,6 +2,6 @@
 
 <ol>
   <% @items.each do |item|%>
-    <li><%= item.text %> <%= link_to "Edit", edit_item_path(item) %></li>
+    <li><%= item.text %> <%= link_to "Edit", edit_item_path(item) %> <%= link_to "Delete", item_path(item), method: "delete" %></li>
   <% end %>
 </ol>
