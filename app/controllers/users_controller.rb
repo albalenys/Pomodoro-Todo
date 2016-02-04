@@ -7,9 +7,9 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       session[:user_id] = user.id
-      redirect_to "/"
+      redirect_to root_path
     else
-      "error"
+      redirect_to new_user_path
     end
   end
 
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
   def auth
     user = User.find_by(email: params[:email])
-    if user
+    if user && user.authenticate([:password])
       session[:user_id] = user.id
       redirect_to root_path
     else
@@ -30,6 +30,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email)
+    params.require(:user).permit(:name, :email, :password)
   end
 end

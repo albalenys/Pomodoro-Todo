@@ -1,7 +1,8 @@
 <h1>Sign Up</h1>
 
 <%= form_for @user do |f|%>
-  Name: <%= f.text_field :name %><br>
-  Email: <%= f.text_field :email %><br>
+  <%= f.text_field :name, placeholder: "name" %><br>
+  <%= f.text_field :email, placeholder: "email" %><br>
+  <%= f.password_field :password, placeholder: "password" %><br>
   <%= f.submit "Submit", class: "btn btn-info" %>
 <% end %>
