@@ -21,6 +21,12 @@ class ItemsController < ApplicationController
   end
 
   def update
+    @item = Item.find(params[:id])
+    if @item.update_attributes(item_params)
+      redirect_to root_path
+    else
+      redirect_to edit_post_path(@item)
+    end
   end
 
   private
