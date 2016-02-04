@@ -11,6 +11,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
+gem 'pry'
 
 group :development, :test do
   gem 'byebug'
