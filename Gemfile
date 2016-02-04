@@ -12,6 +12,7 @@ gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'pry'
+gem 'fancybox2-rails', '~> 0.2.8'
 
 group :development, :test do
   gem 'byebug'
