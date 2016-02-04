@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  root 'items#index'
+  devise_for :users
+
+  authenticated :user do
+    root 'items#index', as: :authenticated_root
+  end
+  root 'users#new'
+
   resources :items
   resources :users
   get 'login' => 'users#login'
