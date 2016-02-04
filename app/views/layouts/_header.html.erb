@@ -3,6 +3,8 @@
     <% if user_signed_in? %>
       <%= link_to "To Do List", root_path, class: "btn btn-primary" %>
       <%= link_to "Log Out", logout_path, method: "delete", class: "btn btn-primary" %>
+    <% else %>
+      <a href="/login" class= "fancybox", data-fancybox-type= "iframe" >Log In</a>
     <% end %>
   </nav>
 </header>
