@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all
+    @items = Item.where(user_id: session[:user_id])
   end
 
   def new
@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    item = Item.new(item_params)
+    item = Item.new(item_params.merge(user_id: session[:user_id]))
     if item.save
       redirect_to "/"
     else
