@@ -2,6 +2,8 @@ html, body {
   margin: 0;
   height: 100%;
   background: #f1e7e2;
+  font-family: 'Alice', serif;
+  font-size: 1.3em;
 }
 
 .left {
@@ -22,7 +24,7 @@ main {
 }
 
 a {
-  color: #00cc99;
+  color: #e94734;
 }
 
 .btn-primary {
@@ -54,4 +56,5 @@ a {
 
 h1, h2, h3 {
   color: #00b359;
+  font-family: 'Gloria Hallelujah', cursive;
 }
