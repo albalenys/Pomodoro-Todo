@@ -1,0 +1,6 @@
+<h3>Start Timer</h3>
+<%= form_for @timer, :url => task_timers_path(@task) do |f|%>
+  <%= f.text_field :length, placeholder: "length of time" %><br>
+  <%= f.hidden_field :task_id, value: @task.id %>
+  <%= f.submit "Submit", class: "btn btn-info" %>
+<% end %>

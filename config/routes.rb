@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   end
   root 'users#welcome'
 
-  resources :tasks
+  resources :tasks do
+    resources :timers
+  end
+
   resources :users, only: [:create, :new]
   get 'login' => 'users#login'
   delete 'logout' => 'users#logout'
