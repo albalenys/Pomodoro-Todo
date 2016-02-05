@@ -11,7 +11,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    task = Task.new(task_params.merge(user: current_user]))
+    task = Task.new(task_params.merge(user: current_user))
     if task.save
       redirect_to root_path
     else
