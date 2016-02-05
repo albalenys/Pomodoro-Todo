@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
   root 'users#welcome'
 
-  resources :tasks do
+  resources :tasks, except: [:new] do
     resources :timers
   end
 

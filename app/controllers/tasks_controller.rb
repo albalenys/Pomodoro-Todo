@@ -3,11 +3,8 @@ class TasksController < ApplicationController
   before_filter :find_task, only: [:edit, :update, :destroy]
 
   def index
-    @tasks = Task.where(user: current_user)
-  end
-
-  def new
     @task = Task.new
+    @tasks = Task.where(user: current_user)
   end
 
   def create
