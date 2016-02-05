@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
   root 'users#welcome'
 
-  resources :items
+  resources :tasks
   resources :users
   get 'login' => 'users#login'
   delete 'logout' => 'users#logout'

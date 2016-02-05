@@ -1,0 +1,15 @@
+<h1>Todo List</h1>
+
+<p><%= link_to "Add New Task", new_item_path, class: "btn btn-primary" %></p>
+
+<ol>
+  <% if @tasks.empty? %>
+    <p>
+      You currently don't have anything in your todo list.<br>
+      Start striking out your tasks and goals today!
+    </p>
+  <% end %>
+  <% @tasks.each do |task|%>
+    <li><%= task.text %> <%= link_to "Edit", edit_task_path(task) %> <%= link_to "Delete", task_path(task), method: "delete" %></li>
+  <% end %>
+</ol>

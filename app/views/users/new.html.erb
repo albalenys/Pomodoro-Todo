@@ -1,6 +1,6 @@
 <div class="center">
   <h3>Sign Up</h3>
-  <%= form_for @user do |f|%>
+  <%= form_for @user, html: {class: 'fancybox-form'} do |f|%>
     <%= f.text_field :name, placeholder: "name" %><br>
     <%= f.text_field :email, placeholder: "email" %><br>
     <%= f.password_field :password, placeholder: "password" %><br>
