@@ -1,6 +1,7 @@
 html, body {
   margin: 0;
   height: 100%;
+  background: #f1e7e2;
 }
 
 .left {
@@ -18,4 +19,39 @@ html, body {
 
 main {
   padding: 5em;
+}
+
+a {
+  color: #00cc99;
+}
+
+.btn-primary {
+  border: 4px solid #e94734;
+  background: #FFF;
+  color: #e94734;
+  font-weight: bold;
+  border-radius: 4.5em;
+}
+
+.btn-primary:hover {
+  border: 4px solid #e94734;
+  background: #f2f2f2;
+  color: #e94734;
+}
+
+.btn-secondary {
+  border: none;
+  background: #a6e896;
+  color: #FFF;
+  font-weight: bold;
+}
+
+.btn-secondary:hover {
+  background: #83df6d;
+  color: #FFF;
+  font-weight: bold;
+}
+
+h1, h2, h3 {
+  color: #00b359;
 }
