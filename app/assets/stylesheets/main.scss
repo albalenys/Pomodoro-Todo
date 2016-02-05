@@ -27,6 +27,10 @@ a {
   color: #e94734;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 .btn-primary {
   border: 4px solid #e94734;
   background: #FFF;
@@ -41,14 +45,8 @@ a {
   color: #e94734;
 }
 
-.btn-secondary {
+.btn-secondary, .btn-secondary:hover {
   border: none;
-  background: #a6e896;
-  color: #FFF;
-  font-weight: bold;
-}
-
-.btn-secondary:hover {
   background: #83df6d;
   color: #FFF;
   font-weight: bold;
