@@ -14,10 +14,10 @@ $(document).ready(function() {
 
   $(".start").submit(function(event) {
     event.preventDefault();
-    var count = $(this).find('input[type="text"]').val();
-    $(".clock-info").html(
-      "<p>You are working on task: <%= @task.text %></p>"
-      );
+    var count = $("#length").val();
+    var task = $("#text").val();
+    $(".clock-info").html("<h4>Work in progress...</h4><p>You are working on task <em>" + task + "</em></p>");
+    $(".clock").html(count + ":00");
     var counter = setInterval(timer, 60000);
 
     function timer() {
@@ -25,7 +25,7 @@ $(document).ready(function() {
       $(".clock").html(count + ":00");
       if (count <= 0) {
         clearInterval(counter);
-        $(".clock").html("<p>end!</p>");
+        alert("You gained a pomodoro!");
       }
     }
   });
