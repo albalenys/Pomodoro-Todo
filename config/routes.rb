@@ -7,9 +7,8 @@ Rails.application.routes.draw do
   root 'users#welcome'
 
   resources :tasks
-  resources :users
+  resources :users, only: [:create, :new]
   get 'login' => 'users#login'
   delete 'logout' => 'users#logout'
   post '/auth' => 'users#auth'
-  get '/index' => 'tasks#index'
 end

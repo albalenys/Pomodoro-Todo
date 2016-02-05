@@ -1,9 +1,5 @@
-require 'pry'
-
 class UsersController < ApplicationController
-  def new
-    @user = User.new
-  end
+  before_filter :new_user, only: [:new, :login]
 
   def create
     user = User.new(user_params)
@@ -13,10 +9,6 @@ class UsersController < ApplicationController
     else
       redirect_to new_user_path
     end
-  end
-
-  def login
-    @user = User.new
   end
 
   def auth
@@ -38,5 +30,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password)
+  end
+
+  def new_user
+    @user = User.new
   end
 end

@@ -1,6 +1,9 @@
 class TasksController < ApplicationController
+  before_filter :authenticate_user!
+  before_filter :find_task, only: [:edit, :update, :destroy]
+
   def index
-    @tasks = Task.where(user_id: session[:user_id])
+    @tasks = Task.where(user: current_user)
   end
 
   def new
@@ -8,20 +11,15 @@ class TasksController < ApplicationController
   end
 
   def create
-    task = Task.new(task_params.merge(user_id: session[:user_id]))
+    task = Task.new(task_params.merge(user: current_user))
     if task.save
-      redirect_to "/"
+      redirect_to root_path
     else
       redirect_to new_task_path
     end
   end
 
-  def edit
-    @task = Task.find(params[:id])
-  end
-
   def update
-    @task = Task.find(params[:id])
     if @task.update_attributes(task_params)
       redirect_to root_path
     else
@@ -30,7 +28,6 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task = Task.find(params[:id])
     @task.destroy
     redirect_to root_path
   end
@@ -39,5 +36,9 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:text)
+  end
+
+  def find_task
+    @task = Task.find(params[:id])
   end
 end
