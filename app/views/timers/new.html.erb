@@ -1,0 +1,5 @@
+<h3>Start Timer</h3>
+<%= form_for @timer, :url => {:id => params[:id]} do |f|%>
+  <%= f.text_field :length, placeholder: "length of time" %><br>
+  <%= f.submit "Submit", class: "btn btn-info" %>
+<% end %>
