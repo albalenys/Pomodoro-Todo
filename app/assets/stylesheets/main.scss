@@ -31,8 +31,12 @@ a:hover {
   text-decoration: none;
 }
 
+.btn {
+  font-size: 0.9em;
+}
+
 .btn-primary, .btn-primary:hover {
-  border: 4px solid #e94734;
+  border: 4px solid #e63422;
   background: #FFF;
   color: #e94734;
   font-weight: bold;
@@ -50,4 +54,5 @@ a:hover {
 h1, h2, h3, h4 {
   color: #00b359;
   font-family: 'Gloria Hallelujah', cursive;
+  font-size: 1.3em;
 }
