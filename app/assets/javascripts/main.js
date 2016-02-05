@@ -14,18 +14,37 @@ $(document).ready(function() {
 
   $(".start").submit(function(event) {
     event.preventDefault();
-    var count = $("#length").val();
     var task = $("#text").val();
-    $(".clock-info").html("<h4>Work in progress...</h4><p>You are working on task <em>" + task + "</em></p>");
-    $(".clock").html(count + ":00");
-    var counter = setInterval(timer, 60000);
+    var minutes = $("#length").val();
+    var seconds = 0;
 
-    function timer() {
-      count -= 1;
-      $(".clock").html(count + ":00");
-      if (count <= 0) {
-        clearInterval(counter);
+    $(".clock-info").html("<h4>Work in progress...</h4><p>You are working on task <em>" + task + "</em></p>");
+    $(".minutes").html(minutes);
+    $(".seconds").html("0" + seconds);
+    var minCounter = setInterval(minTimer, 60000);
+    var secCounter = setInterval(secTimer, 1000);
+
+    function minTimer() {
+      minutes -= 1;
+      $(".minutes").html(minutes);
+      if (minutes <= 0) {
+        clearInterval(mincounter);
         alert("You gained a pomodoro!");
+      }
+    }
+
+    function secTimer() {
+      seconds -= 1;
+
+      if (seconds <= 0) {
+        seconds = 59;
+        $(".seconds").html(seconds);
+      }
+      else if (seconds < 10) {
+        $(".seconds").html("0" + seconds);
+      }
+      else {
+        $(".seconds").html(seconds);
       }
     }
   });
