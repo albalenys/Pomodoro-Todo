@@ -14,13 +14,15 @@ $(document).ready(function() {
 
   $(".start").submit(function(event) {
     event.preventDefault();
-    $(".clock-info").empty();
-    var count = 10;
-    var counter = setInterval(timer, 1000);
+    var count = $(this).find('input[type="text"]').val();
+    $(".clock-info").html(
+      "<p>You are working on task: <%= @task.text %></p>"
+      );
+    var counter = setInterval(timer, 60000);
 
     function timer() {
       count -= 1;
-      $(".clock").html(count);
+      $(".clock").html(count + ":00");
       if (count <= 0) {
         clearInterval(counter);
         $(".clock").html("<p>end!</p>");
