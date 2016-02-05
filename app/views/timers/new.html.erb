@@ -1,3 +1,6 @@
+<div class="clock">
+</div>
+
 <div class="clock-info">
   <h3>Start Timer</h3>
   <%= form_for @timer, :url => task_timers_path(@task), :html => {:class => "start"} do |f|%>
@@ -5,7 +8,4 @@
     <%= f.hidden_field :task_id, value: @task.id %>
     <%= f.submit "Submit", class: "btn btn-info" %>
   <% end %>
-</div>
-
-<div class="clock">
 </div>
