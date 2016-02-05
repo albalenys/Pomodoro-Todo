@@ -1,3 +1,5 @@
+require 'pry'
+
 class UsersController < ApplicationController
   def new
     @user = User.new
@@ -19,7 +21,7 @@ class UsersController < ApplicationController
 
   def auth
     user = User.find_by(email: params[:user][:email])
-    if user.valid_password?(params[:user][:password])
+    if user && user.valid_password?(params[:user][:password])
       sign_in(:user, user)
       redirect_to root_path
     else

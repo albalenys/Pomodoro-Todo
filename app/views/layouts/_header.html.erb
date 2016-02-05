@@ -3,6 +3,9 @@
     <% if user_signed_in? %>
       <%= link_to "To Do List", root_path, class: "btn btn-primary" %>
       <%= link_to "Log Out", logout_path, method: "delete", class: "btn btn-primary" %>
+    <% elsif current_page?(root_path)%>
+      <a href="/login" class= "btn btn-primary fancybox", data-fancybox-type= "iframe">Log In</a>
+      <a href="/users/new" class="btn btn-primary fancybox", data-fancybox-type= "iframe" >Sign Up</a>
     <% end %>
   </nav>
 </header>

@@ -2,13 +2,14 @@ Rails.application.routes.draw do
   devise_for :users
 
   authenticated :user do
-    root 'items#index', as: :authenticated_root
+    root 'tasks#index', as: :authenticated_root
   end
-  root 'users#new'
+  root 'users#welcome'
 
-  resources :items
+  resources :tasks
   resources :users
   get 'login' => 'users#login'
   delete 'logout' => 'users#logout'
   post '/auth' => 'users#auth'
+  get '/index' => 'tasks#index'
 end

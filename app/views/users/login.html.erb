@@ -1,7 +1,9 @@
-<h1>Log In</h1>
+<div class="center">
+  <h1>Log In</h1>
 
-<%= form_for @user, url: {action: "auth"} do |f| %>
-  <%= f.text_field :email, placeholder: "email" %><br>
-  <%= f.password_field :password, placeholder: "password" %><br>
-  <%= f.submit "Submit", class: "btn btn-info" %>
-<% end %>
+  <%= form_for @user, html: {class: 'fancybox-form'}, url: {action: "auth"} do |f| %>
+    <%= f.text_field :email, placeholder: "email" %><br>
+    <%= f.password_field :password, placeholder: "password" %><br>
+    <%= f.submit "Submit", class: "btn btn-info" %>
+  <% end %>
+</div>
