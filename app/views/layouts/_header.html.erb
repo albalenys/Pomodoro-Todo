@@ -1,11 +1,15 @@
-<header>
-  <nav class="right">
-    <% if user_signed_in? %>
-      <%= link_to "To Do List", root_path, class: "btn btn-primary" %>
-      <%= link_to "Log Out", logout_path, method: "delete", class: "btn btn-primary" %>
-    <% elsif current_page?(root_path)%>
-      <a href="/login" class= "btn btn-primary fancybox", data-fancybox-type= "iframe">Log In</a>
-      <a href="/users/new" class="btn btn-primary fancybox", data-fancybox-type= "iframe" >Sign Up</a>
-    <% end %>
-  </nav>
-</header>
+<% if !current_page?(new_user_path) && !current_page?(login_path)%>
+  <header>
+    <a href=<%= root_path %>>
+      <img src="http://a4.mzstatic.com/us/r30/Purple1/v4/8a/3a/1f/8a3a1f6c-ebc6-4bbd-bc61-bf27aed94494/icon128-2x.png" class="icon"> <span class="title">Pomodoro ToDo</span>
+    </a>
+    <nav class="right">
+      <% if user_signed_in? %>
+        <%= link_to "Log Out", logout_path, method: "delete", class: "btn btn-primary" %>
+      <% else %>
+        <a href="/login" class= "btn btn-primary fancybox", data-fancybox-type= "iframe">Log In</a>
+        <a href="/users/new" class="btn btn-primary fancybox", data-fancybox-type= "iframe" >Sign Up</a>
+      <% end %>
+    </nav>
+  </header>
+<% end %>
