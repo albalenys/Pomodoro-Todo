@@ -12,9 +12,9 @@
   <% @tasks.each do |task|%>
     <li>
       <%= task.text %>
-        <%= link_to image_tag("delete-icon.png", class: "icon"), task_path(task), method: "delete" %>
+      <%= link_to image_tag("delete-icon.png", class: "icon"), task_path(task), method: "delete" %>
+      <%= link_to image_tag("edit-icon.png", class: "icon"), edit_task_path(task) %>
         <ul>
-          <li><%= link_to "Edit", edit_task_path(task) %></li>
           <li><%= link_to "Start Timer", new_task_timer_path(task) %></li>
         </ul>
     </li>
