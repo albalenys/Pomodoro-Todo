@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root 'users#welcome'
 
   resources :tasks, except: [:new, :show] do
-    resources :timers, only: [:create, :new]
+    resources :pomodoros, only: [:create, :new]
   end
 
   resources :users, only: [:create, :new]

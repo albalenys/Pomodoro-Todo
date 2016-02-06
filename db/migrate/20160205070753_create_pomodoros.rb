@@ -1,6 +1,6 @@
-class CreateTimers < ActiveRecord::Migration
+class CreatePomodoros < ActiveRecord::Migration
   def change
-    create_table :timers do |t|
+    create_table :pomodoros do |t|
       t.integer :length, null: false, default: 25
 
       t.belongs_to :task, null: false

@@ -1,7 +1,7 @@
 <main>
   <div class="clock-info">
     <h3>Start Timer</h3>
-    <%= form_for @timer, :url => task_timers_path(@task), :html => {:class => "start"} do |f|%>
+    <%= form_for @pomodoro, :url => task_pomodoros_path(@task), :html => {:class => "start"} do |f|%>
       <%= f.text_field :length, id: "length", placeholder: "length of time" %><br>
       <%= f.hidden_field :text, id: "text", value: @task.text %>
       <%= f.submit "Submit", class: "btn btn-info" %>

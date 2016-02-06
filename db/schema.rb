@@ -13,18 +13,18 @@
 
 ActiveRecord::Schema.define(version: 20160205070753) do
 
+  create_table "pomodoros", force: :cascade do |t|
+    t.integer  "length",     default: 25, null: false
+    t.integer  "task_id",                 null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.string   "text",       null: false
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "timers", force: :cascade do |t|
-    t.integer  "length",     default: 25, null: false
-    t.integer  "task_id",                 null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
