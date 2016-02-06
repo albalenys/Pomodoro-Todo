@@ -20,6 +20,7 @@ $(document).ready(function() {
 
     $(".clock-info").html("<h4>Work in progress...</h4><p>You are working on task <em>" + task + "</em></p>");
     $( ".clock" ).show();
+    $( ".clock-bg" ).show();
     $(".minutes").html(minutes);
     $(".seconds").html("0" + seconds);
     var minCounter = setInterval(minTimer, 60000);

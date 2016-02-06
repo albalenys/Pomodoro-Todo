@@ -1,7 +1,18 @@
 .clock {
+  width: 40%;
+  background: #FFF;
   text-align: center;
   margin: auto;
   font-size: 4em;
   font-weight: bold;
+  display: none;
+  border-radius: 1em;
+}
+
+.clock-bg {
+  position: absolute;
+  top: 9.8em;
+  left: 13.5em;
+  width: 6em;
   display: none;
 }
