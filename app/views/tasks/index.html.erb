@@ -1,7 +1,6 @@
-<p>Add New Task: <%= render "form" %></p>
-
 <h2>Todo List</h2>
 <ol class="list">
+  <%= render "form" %>
   <% if @tasks.empty? %>
     <p>
       You currently don't have anything in your todo list.<br>
