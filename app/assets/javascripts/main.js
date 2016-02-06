@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  // Fancybox
   $("a.fancybox").fancybox();
 
   $(".fancybox-form").submit(function(event) {
@@ -12,6 +13,20 @@ $(document).ready(function() {
     }
   });
 
+  // Ajax
+  $(".add_task").submit(function(event) {
+    event.preventDefault();
+    $.ajax({
+      url: $(this).attr('action'),
+      data: $(this).serialize(),
+      method: $(this).attr('method')
+    }).done(function(response) {
+      new_task = $(response).find(".list li").last();
+      $(".list").append(new_task[0]);
+    })
+  });
+
+  // Timer
   $(".start").submit(function(event) {
     event.preventDefault();
     var task = $("#text").val();
