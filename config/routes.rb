@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   end
   root 'users#welcome'
 
-  resources :tasks, except: [:new] do
-    resources :timers
+  resources :tasks, except: [:new, :show] do
+    resources :timers, only: [:create, :new]
   end
 
   resources :users, only: [:create, :new]

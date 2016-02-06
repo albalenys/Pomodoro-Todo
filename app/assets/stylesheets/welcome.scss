@@ -1,0 +1,19 @@
+.welcome-banner {
+  width: 100%;
+  background-image: url("pomodoro-bg.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  padding: 4em;
+  z-index: -1;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+
+.welcome-message {
+  position: absolute;
+  top: 8em;
+  color: #f1e7e2;
+}
