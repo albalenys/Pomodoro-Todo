@@ -21,7 +21,7 @@ html, body {
 
 main {
   width: 100%;
-  padding: 0 5em;
+  padding: 0 5em 2em;
 }
 
 a {
@@ -56,4 +56,16 @@ h1, h2, h3, h4 {
   color: #00b359;
   font-family: 'Gloria Hallelujah', cursive;
   font-size: 1.3em;
+}
+
+input[type="text"], input[type="password"] {
+  font-family: 'Courier New', serif;
+  font-size: 0.8em;
+  font-weight: bold;
+  color: #00b359;
+  width: 70%;
+}
+
+input:focus {
+  color: #e94735;
 }
