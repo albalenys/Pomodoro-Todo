@@ -14,7 +14,7 @@ $(document).ready(function() {
   });
 
   // Ajax
-  $(".add_task").submit(function(event) {
+  $("#add-task").submit(function(event) {
     event.preventDefault();
     $.ajax({
       url: $(this).attr('action'),
@@ -23,6 +23,7 @@ $(document).ready(function() {
     }).done(function(response) {
       new_task = $(response).find(".list li").last();
       $(".list").append(new_task[0]);
+      $("#add-task").trigger("reset");
     })
   });
 
