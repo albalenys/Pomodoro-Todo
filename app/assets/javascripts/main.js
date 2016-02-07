@@ -14,16 +14,35 @@ $(document).ready(function() {
   });
 
   // Ajax
-  $("#add-task").submit(function(event) {
+  $("#add-task").on("submit", "form", function(event) {
     event.preventDefault();
     $.ajax({
       url: $(this).attr('action'),
       data: $(this).serialize(),
       method: $(this).attr('method')
     }).done(function(response) {
-      new_task = $(response).find(".list li").last();
-      $(".list").append(new_task[0]);
-      $("#add-task").trigger("reset");
+      newTask = $(response).find(".list li").last();
+      $(".list").append(newTask[0]);
+      $("#add-task form").trigger("reset");
+    })
+  });
+
+  // $(document).on("click", ".delete-task", function(event) {
+  //   event.preventDefault();
+  //   $(event.target).closest("li").remove();
+  // });
+
+  $(".edit-task").click(function(event) {
+    event.preventDefault();
+    $.ajax({
+      url: $(this).attr('action'),
+      data: $(this).serialize(),
+      method: $(this).attr('method')
+    }).done(function(response) {
+      editForm = $(event.target).closest("li").find(".task-form")
+      currentTask = $(event.target).closest("li").find(".task")
+      editForm.show();
+      currentTask.hide();
     })
   });
 
