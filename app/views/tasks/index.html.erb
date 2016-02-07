@@ -14,7 +14,7 @@
     <% @tasks.each do |task|%>
       <li>
         <div class="task-form">
-          <%= render "edit", task: task %>
+          <%= render "form", :@task => task %>
         </div>
         <div class="task">
           <%= task.text %>
