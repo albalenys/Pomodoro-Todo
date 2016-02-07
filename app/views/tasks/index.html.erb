@@ -1,7 +1,10 @@
 <main>
   <h2>Todo List</h2>
   <ol class="list">
-    <%= render "form" %>
+    <div id="add-task">
+      <%= render "form" %>
+    </div>
+
     <% if @tasks.empty? %>
       <p>
         You currently don't have anything in your todo list.<br>
@@ -10,10 +13,15 @@
     <% end %>
     <% @tasks.each do |task|%>
       <li>
-        <%= task.text %>
-        <%= link_to image_tag("edit-icon.png", class: "icon", alt: "Edit", title: "Delete"), edit_task_path(task) %>
-        <%= link_to image_tag("delete-icon.png", class: "icon", alt: "Delete", title: "Delete"), task_path(task), method: "delete" %>
-        <%= link_to image_tag("timer-icon.png", class: "icon", alt: "Timer", title: "Start Timer"), new_task_pomodoro_path(task) %>
+        <div class="task-form">
+          <%= render "form", :@task => task %>
+        </div>
+        <div class="task">
+          <%= task.text %>
+          <%= link_to image_tag("edit-icon.png", class: "edit-task icon", alt: "Edit", title: "Delete"), edit_task_path(task) %>
+          <%= link_to image_tag("delete-icon.png", class: "delete-task icon", alt: "Delete", title: "Delete"), task_path(task), method: "delete" %>
+          <%= link_to image_tag("timer-icon.png", class: "icon", alt: "Timer", title: "Start Timer"), new_task_pomodoro_path(task) %>
+        </div>
       </li>
     <% end %>
   </ol>
