@@ -7,7 +7,7 @@ class PomodorosController < ApplicationController
   def create
     pomodoro = Pomodoro.new(pomodoro_params)
     if pomodoro.save
-      redirect_to task_pomodoro_path(pomodoro.task_id, pomodoro.id)
+      redirect_to root_path
     else
       redirect_to new_task_pomodoro_path
     end

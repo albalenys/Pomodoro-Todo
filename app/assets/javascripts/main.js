@@ -27,8 +27,8 @@ $(document).ready(function() {
       data: $(this).serialize(),
       method: $(this).attr('method')
     }).done(function(response) {
-      editForm = $(event.target).closest("li").find(".task-form")
-      currentTask = $(event.target).closest("li").find(".task")
+      editForm = $(event.target).closest("li").find(".task-form");
+      currentTask = $(event.target).closest("li").find(".task");
       editForm.show();
       currentTask.hide();
     })
