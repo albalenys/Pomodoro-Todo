@@ -1,4 +1,12 @@
 function taskAjax() {
+  $(".list li").hover(
+  function(){
+    $(event.target).find(".task-options").fadeIn(300);
+  },
+  function(){
+    $(event.target).find(".task-options").fadeOut(300);
+  });
+
   $("#add-task").on("submit", "form", function(event) {
     event.preventDefault();
     $.ajax({
