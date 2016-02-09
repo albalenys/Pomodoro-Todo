@@ -1,7 +1,7 @@
 <main>
+  <p>Click <%= link_to "here", reset_path %> to reset your pomodoro count.</p>
   <% if Pomodoro.count >= 4 %>
     <p>It's time for a break!</p>
-    <p>Click here to reset you're pomodoro count.</p>
   <% end %>
   <h2>Todo List</h2>
   <ol class="list">
