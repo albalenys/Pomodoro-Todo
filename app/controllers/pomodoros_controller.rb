@@ -5,12 +5,17 @@ class PomodorosController < ApplicationController
   end
 
   def create
-    pomodoro = Pomodoro.new(pomodoro_params)
+    pomodoro = Pomodoro.new(pomodoro_params.merge(user: current_user))
     if pomodoro.save
-      redirect_to task_pomodoro_path(pomodoro.task_id, pomodoro.id)
+      redirect_to root_path
     else
       redirect_to new_task_pomodoro_path
     end
+  end
+
+  def reset
+    Pomodoro.where(user: current_user).destroy_all
+    redirect_to root_path
   end
 
   private

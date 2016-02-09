@@ -6,5 +6,6 @@ class User < ActiveRecord::Base
   validates :password, presence: true
   validates_uniqueness_of :email
 
-  has_many :items
+  has_many :tasks
+  has_many :pomodoros
 end

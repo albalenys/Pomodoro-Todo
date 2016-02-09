@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   get 'login' => 'users#login'
   delete 'logout' => 'users#logout'
   post '/auth' => 'users#auth'
+  get '/reset' => 'pomodoros#reset'
 end

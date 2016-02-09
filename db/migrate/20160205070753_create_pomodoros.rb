@@ -4,6 +4,7 @@ class CreatePomodoros < ActiveRecord::Migration
       t.integer :length, null: false, default: 25
 
       t.belongs_to :task, null: false
+      t.belongs_to :user, null: false
 
       t.timestamps
     end
