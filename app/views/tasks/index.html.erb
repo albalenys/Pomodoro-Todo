@@ -21,7 +21,7 @@
         <div class="task-form">
           <%= render "form", :@task => task %>
         </div>
-        <div class="task">
+        <div class="task" id="<%= @task.id %>">
           <%= task.text %>
           <span class="task-options">
             <%= link_to image_tag("edit-icon.png", class: "edit-task icon", alt: "Edit", title: "Delete"), edit_task_path(task) %>
