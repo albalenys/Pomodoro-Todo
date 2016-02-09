@@ -58,7 +58,7 @@ function secTimer() {
       if (minutes <= 0) {
         clearInterval(minInterval);
         clearInterval(secInterval);
-        alert(message);
+        sweetAlert("Good job!", message, "success");
       }
       seconds = 59;
       $(".seconds").html(seconds);

@@ -10,6 +10,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
 gem 'pry'
 gem 'fancybox2-rails', '~> 0.2.8'
+gem 'sweetalert-rails'
 
 group :development, :test do
   gem 'byebug'
