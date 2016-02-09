@@ -12,9 +12,11 @@ function taskAjax() {
     })
   });
 
-  $(document).on("click", ".delete-task", function(event) {
+  $(".list").on("click", ".delete-task", function(event) {
     event.preventDefault();
-    $(event.target).closest("li").remove();
+    if (confirm("Are you sure you want to delete this task?")) {
+      $(event.target).closest("li").remove();
+    }
   });
 
   $(".edit-task").click(function(event) {
