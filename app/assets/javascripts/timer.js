@@ -1,7 +1,5 @@
 function initTimer() {
-
   $("#start").submit(function(event) {
-
     event.preventDefault();
     $.ajax({
       url: $(this).attr('action'),
@@ -47,7 +45,5 @@ function initTimer() {
         }
       }
     })
-
   });
-
 }
