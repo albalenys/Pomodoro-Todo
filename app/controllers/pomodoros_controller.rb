@@ -15,7 +15,6 @@ class PomodorosController < ApplicationController
 
   def reset
     Pomodoro.where(user: current_user).destroy_all
-    redirect_to root_path
   end
 
   private

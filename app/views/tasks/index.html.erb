@@ -1,8 +1,13 @@
 <main>
-  <p>Click <%= link_to "here", reset_path %> to reset your pomodoro count.</p>
   <% if Pomodoro.count >= 4 %>
-    <p>It's time for a break!</p>
+    <div class="break-notification">
+      <h3 class="center">Good work!</h3>
+      <p>You now have four or more pomodoros and it's time to take a break!<br>
+        Click below to begin a 15 minute timer and reset your pomodoro count.<br>
+      <%= link_to "Take Break", reset_path, class: "btn btn-alert" %></p>
+    </div>
   <% end %>
+  <p>*Hover over a task to edit, delete, or start a timer.</p>
   <h2>Todo List</h2>
   <div class="list">
     <ol>

@@ -1,0 +1,17 @@
+<main>
+  <div class="center clock-info">
+    <p>Enter how many minutes to set timer for.<br>
+      Breaks are usually 15 to 30 minutes.</p>
+    <h3>Start Timer</h3>
+    <form id="start-break">
+      <input type="text" name="length" id="length" placeholder="minutes"><br>
+      <input type="submit" value="Submit" class="btn btn-secondary">
+    </form>
+  </div>
+
+  <%= image_tag("pomodoro-timer.png", class: "clock-bg") %>
+
+  <div class="clock">
+    <span class="minutes"></span>:<span class="seconds"></span>
+  </div>
+</main>

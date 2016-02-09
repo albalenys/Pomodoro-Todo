@@ -22,9 +22,12 @@ function taskAjax() {
 
   $(".list").on("click", ".delete-task", function(event) {
     event.preventDefault();
-    if (confirm("Are you sure you want to delete this task?")) {
-      $(event.target).closest("li").remove();
+    if(!confirm("Are you sure you want to delete this task?")){
+      event.preventDefault();
+      return false;
     }
+    $(event.target).closest("li").remove();
+    return true;
   });
 
   $(".edit-task").click(function(event) {
