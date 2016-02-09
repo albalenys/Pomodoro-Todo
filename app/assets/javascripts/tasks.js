@@ -1,10 +1,10 @@
 function taskAjax() {
-  $(".list li").hover(
-  function(){
-    $(event.target).find(".task-options").fadeIn(300);
+  $(".list li").hoverIntent(
+  function(event){
+    $(event.target).find(".task-options").fadeIn(200);
   },
-  function(){
-    $(event.target).find(".task-options").fadeOut(300);
+  function(event){
+    $(event.target).find(".task-options").fadeOut(200);
   });
 
   $("#add-task").on("submit", "form", function(event) {
