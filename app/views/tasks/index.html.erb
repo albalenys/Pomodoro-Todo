@@ -26,7 +26,9 @@
           <%= link_to image_tag("delete-icon.png", class: "delete-task icon", alt: "Delete", title: "Delete"), task_path(task), method: "delete" %>
           <%= link_to image_tag("timer-icon.png", class: "icon", alt: "Timer", title: "Start Timer"), new_task_pomodoro_path(task) %>
           <% task.pomodoros.each do |pomodoro|%>
-            <%= image_tag("pomodoro-timer.png", class: "icon") %>
+            <% if pomodoro.user == current_user %>
+              <%= image_tag("pomodoro-timer.png", class: "icon") %>
+            <% end %>
           <% end %>
         </div>
       </li>
