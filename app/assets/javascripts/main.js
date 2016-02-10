@@ -3,3 +3,9 @@ $(document).ready(function() {
   initTimer();
   taskAjax();
 });
+
+function handleErrors(response) {
+  var errors = $(response).find("#errors");
+  $("#errors").html(errors);
+  return errors.length > 0;
+}

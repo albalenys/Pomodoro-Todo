@@ -18,7 +18,6 @@ function taskAjax() {
       method: $(this).attr('method')
     }).done(function(response) {
       var newTask = $(response).find(".list li").last();
-      debugger
       $(".list ol").append(newTask[0]);
       $("#add-task form").trigger("reset");
     })

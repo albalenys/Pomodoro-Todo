@@ -4,14 +4,18 @@ function initTimer() {
     minutes = $("#length").val();
     seconds = 0;
     message = "Your break is over!";
-
-    $(".clock-info").html("<h4>Taking a break...</h4><p>You are now taking a break before continuing your work.</p>");
-    $( ".clock" ).show();
-    $( ".clock-bg" ).show();
-    $(".minutes").html(minutes - 1);
-    $(".seconds").html(59);
-    minTimer();
-    secTimer();
+    if(minutes < 15 || minutes > 59 || isNaN(minutes)) {
+      $("#errors").html("<p class='notification'>Must enter integer from 15 to 59.</p>");
+    }
+    else {
+      $(".clock-info").html("<h4>Taking a break...</h4><p>You are now taking a break before continuing your work.</p>");
+      $(".clock").show();
+      $(".clock-bg").show();
+      $(".minutes").html(minutes - 1);
+      $(".seconds").html(59);
+      minTimer();
+      secTimer();
+    }
   })
 
   $("#start-break").ajaxComplete(function() {
@@ -23,21 +27,26 @@ function initTimer() {
     $.ajax({
       url: $(this).attr('action'),
       data: $(this).serialize(),
-      method: $(this).attr('method')
-    }).done(function(response) {
-      task = $("#text").val();
-      minutes = $("#length").val();
-      seconds = 0;
+      method: $(this).attr('method'),
+      success: function(response) {
+        handleErrors(response);
+        task = $("#text").val();
+        minutes = $("#length").val();
+        seconds = 0;
 
-      if(minutes >= 10 && minutes <= 59) {
-        message = "You gained a pomodoro!";
-        $(".clock-info").html("<h4>Work in progress...</h4><p>You are working on task <em>" + task + "</em></p>");
-        $( ".clock" ).show();
-        $( ".clock-bg" ).show();
-        $(".minutes").html(minutes - 1);
-        $(".seconds").html(59);
-        minTimer();
-        secTimer();
+        if(minutes >= 10 && minutes <= 59) {
+          message = "You gained a pomodoro!";
+          $(".clock-info").html("<h4>Work in progress...</h4><p>You are working on task <em>" + task + "</em></p>");
+          $(".clock").show();
+          $(".clock-bg").show();
+          $(".minutes").html(minutes - 1);
+          $(".seconds").html(59);
+          minTimer();
+          secTimer();
+        }
+      },
+      fail: function() {
+        alert("The request has failed.");
       }
     })
   });
