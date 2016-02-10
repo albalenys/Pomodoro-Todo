@@ -1,6 +1,13 @@
 <main>
+  <div id="errors">
+    <%= render "layouts/error" %>
+  </div>
+
   <div class="center clock-info">
-    <p>Enter how many minutes to set timer for. The default is 25 minutes, however you can enter a minimum of 10 and a max of 59 minutes.</p>
+    <p>
+      Enter how many minutes to set timer for.<br>
+      The default is 25 minutes, however you can enter a minimum of 10 and a max of 59 minutes.
+    </p>
     <h3>Start Timer</h3>
     <%= form_for @pomodoro, url: task_pomodoros_path(@task), :html => {id: "start-task"} do |f|%>
       <%= f.text_field :length, id: "length", placeholder: "minutes" %><br>

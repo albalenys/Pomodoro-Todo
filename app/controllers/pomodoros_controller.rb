@@ -9,6 +9,7 @@ class PomodorosController < ApplicationController
     if pomodoro.save
       redirect_to root_path
     else
+      flash[:error] = pomodoro.errors.full_messages
       redirect_to new_task_pomodoro_path
     end
   end

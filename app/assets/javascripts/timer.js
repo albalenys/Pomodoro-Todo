@@ -23,21 +23,27 @@ function initTimer() {
     $.ajax({
       url: $(this).attr('action'),
       data: $(this).serialize(),
-      method: $(this).attr('method')
-    }).done(function(response) {
-      task = $("#text").val();
-      minutes = $("#length").val();
-      seconds = 0;
+      method: $(this).attr('method'),
+      success: function(response) {
+        var errors = $(response).find("#errors");
+        $("#errors").replaceWith(errors);
+        task = $("#text").val();
+        minutes = $("#length").val();
+        seconds = 0;
 
-      if(minutes >= 10 && minutes <= 59) {
-        message = "You gained a pomodoro!";
-        $(".clock-info").html("<h4>Work in progress...</h4><p>You are working on task <em>" + task + "</em></p>");
-        $( ".clock" ).show();
-        $( ".clock-bg" ).show();
-        $(".minutes").html(minutes - 1);
-        $(".seconds").html(59);
-        minTimer();
-        secTimer();
+        if(minutes >= 10 && minutes <= 59) {
+          message = "You gained a pomodoro!";
+          $(".clock-info").html("<h4>Work in progress...</h4><p>You are working on task <em>" + task + "</em></p>");
+          $( ".clock" ).show();
+          $( ".clock-bg" ).show();
+          $(".minutes").html(minutes - 1);
+          $(".seconds").html(59);
+          minTimer();
+          secTimer();
+        }
+      },
+      fail: function() {
+        alert("The request has failed.");
       }
     })
   });
