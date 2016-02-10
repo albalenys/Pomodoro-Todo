@@ -7,6 +7,7 @@ class UsersController < ApplicationController
       sign_in(:user, user)
       redirect_to root_path
     else
+      flash[:error] = user.errors.full_messages
       redirect_to new_user_path
     end
   end
@@ -17,6 +18,7 @@ class UsersController < ApplicationController
       sign_in(:user, user)
       redirect_to root_path
     else
+      flash[:error] = ["Invalid username and password combination."]
       redirect_to login_path
     end
   end

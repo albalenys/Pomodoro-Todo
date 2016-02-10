@@ -5,7 +5,6 @@ function initTimer() {
     seconds = 0;
     message = "Your break is over!";
     if(minutes < 15 || minutes > 59 || isNaN(minutes)) {
-      debugger
       $("#errors").html("<p class='notification'>Must enter integer from 15 to 59.</p>");
     }
     else {
@@ -30,8 +29,7 @@ function initTimer() {
       data: $(this).serialize(),
       method: $(this).attr('method'),
       success: function(response) {
-        var errors = $(response).find("#errors");
-        $("#errors").innerHTML(errors);
+        handleErrors(response);
         task = $("#text").val();
         minutes = $("#length").val();
         seconds = 0;

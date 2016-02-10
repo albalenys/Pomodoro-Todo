@@ -1,4 +1,8 @@
 <div class="center register-user">
+  <div id="errors">
+    <%= render "layouts/error" %>
+  </div>
+
   <h3>Log In</h3>
   <%= form_for @user, html: {class: 'fancybox-form'}, url: {action: "auth"} do |f| %>
     <%= f.text_field :email, placeholder: "email" %><br>

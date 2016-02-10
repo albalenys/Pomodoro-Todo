@@ -2,7 +2,9 @@ function initFancyBox() {
   $("a.fancybox").fancybox();
 
   $(".fancybox-form").submit(function(event) {
-    parent.$.fancybox.close();
+    if(!handleErrors(response)) {
+      parent.$.fancybox.close();
+    }
   });
 
   $(".fancybox").fancybox({
