@@ -1,11 +1,14 @@
 function taskAjax() {
-  $(".list li").hoverIntent(
+  $(".task").hoverIntent(
     function(event){
       $(event.target).find(".task-options").fadeIn(200);
     },
     function(event){
       $(event.target).find(".task-options").fadeOut(200);
-  });
+    },
+    {
+      selector: ".list"
+    });
 
   $("#add-task").on("submit", "form", function(event) {
     event.preventDefault();
@@ -15,7 +18,8 @@ function taskAjax() {
       method: $(this).attr('method')
     }).done(function(response) {
       var newTask = $(response).find(".list li").last();
-      $(".list").append(newTask[0]);
+      debugger
+      $(".list ol").append(newTask[0]);
       $("#add-task form").trigger("reset");
     })
   });
