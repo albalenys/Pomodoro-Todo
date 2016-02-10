@@ -15,12 +15,14 @@
         <%= render "form" %>
       </div>
 
-      <% if @tasks.empty? %>
-        <p>
-          You currently don't have anything in your todo list.<br>
-          Start striking out your tasks and goals today!
-        </p>
-      <% end %>
+      <div id="empty-list">
+        <% if @tasks.empty? %>
+          <p>
+            You currently don't have anything in your todo list.<br>
+            Start striking out your tasks and goals today!
+          </p>
+        <% end %>
+      </div>
 
       <% @tasks.each do |task|%>
         <li>

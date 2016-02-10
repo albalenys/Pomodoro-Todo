@@ -18,6 +18,8 @@ function taskAjax() {
       method: $(this).attr('method')
     }).done(function(response) {
       var newTask = $(response).find(".list li").last();
+      var updatedMsg = $(response).find("#empty-list");
+      $("#empty-list").html(updatedMsg);
       $(".list ol").append(newTask[0]);
       $("#add-task form").trigger("reset");
     })
@@ -30,6 +32,9 @@ function taskAjax() {
       return false;
     }
     $(event.target).closest("li").remove();
+    if($(".list li").length == 0) {
+      $("#empty-list").html("<p>You currently don't have anything in your todo list.<br>Start striking out your tasks and goals today!</p>");
+    }
     return true;
   });
 
