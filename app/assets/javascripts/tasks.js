@@ -17,11 +17,14 @@ function taskAjax() {
       data: $(this).serialize(),
       method: $(this).attr('method')
     }).done(function(response) {
-      var newTask = $(response).find(".list li").last();
-      var updatedMsg = $(response).find("#empty-list");
-      $("#empty-list").html(updatedMsg);
-      $(".list ol").append(newTask[0]);
-      $("#add-task form").trigger("reset");
+      var errors = handleErrors(response);
+      if(!errors) {
+        var newTask = $(response).find(".list li").last();
+        var updatedMsg = $(response).find("#empty-list");
+        $("#empty-list").html(updatedMsg);
+        $(".list ol").append(newTask[0]);
+        $("#add-task form").trigger("reset");
+      }
     })
   });
 

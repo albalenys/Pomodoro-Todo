@@ -7,6 +7,11 @@
       <%= link_to "Take Break", reset_path, class: "btn btn-alert" %></p>
     </div>
   <% end %>
+
+  <div id="errors">
+    <%= render "layouts/error" %>
+  </div>
+
   <p>*Hover over a task to edit, delete, or start a timer.</p>
   <h2>Todo List</h2>
   <div class="list">
