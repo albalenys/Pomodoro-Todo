@@ -12,7 +12,8 @@ class TasksController < ApplicationController
     if task.save
       redirect_to root_path
     else
-      redirect_to new_task_path
+      flash[:error] = task.errors.full_messages
+      redirect_to root_path
     end
   end
 
@@ -20,7 +21,8 @@ class TasksController < ApplicationController
     if @task.update_attributes(task_params)
       redirect_to root_path
     else
-      redirect_to edit_post_path(@task)
+      flash[:error] = @task.errors.full_messages
+      redirect_to root_path
     end
   end
 
