@@ -11,6 +11,7 @@ gem 'devise'
 gem 'pry'
 gem 'fancybox2-rails', '~> 0.2.8'
 gem 'sweetalert-rails'
+gem 'rails_12factor'
 
 group :development, :test do
   gem 'byebug'
