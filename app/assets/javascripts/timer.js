@@ -14,6 +14,10 @@ function initTimer() {
     secTimer();
   })
 
+  $("#start-break").ajaxComplete(function() {
+    window.location.href = "/";
+  });
+
   $("#start-task").submit(function(event) {
     event.preventDefault();
     $.ajax({
@@ -58,7 +62,14 @@ function secTimer() {
       if (minutes <= 0) {
         clearInterval(minInterval);
         clearInterval(secInterval);
-        sweetAlert("Good job!", message, "success");
+        sweetAlert({
+          title: "Good job!",
+          text: message,
+          type: "success"
+        },
+        function () {
+            window.location.href = "/";
+        });
       }
       seconds = 59;
       $(".seconds").html(seconds);
