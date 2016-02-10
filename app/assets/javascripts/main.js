@@ -7,5 +7,5 @@ $(document).ready(function() {
 function handleErrors(response) {
   var errors = $(response).find("#errors");
   $("#errors").html(errors);
-  errors ? true : false
+  return errors.length > 0;
 }

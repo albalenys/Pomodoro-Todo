@@ -2,9 +2,21 @@ function initFancyBox() {
   $("a.fancybox").fancybox();
 
   $(".fancybox-form").submit(function(event) {
-    if(!handleErrors(response)) {
-      parent.$.fancybox.close();
-    }
+    event.preventDefault();
+    $.ajax({
+      url: $(this).attr('action'),
+      data: $(this).serialize(),
+      method: $(this).attr('method'),
+      success: function(response) {
+        var errors = handleErrors(response);
+        if(!errors) {
+          parent.$.fancybox.close();
+        }
+      },
+      fail: function() {
+        alert("The request has failed.");
+      }
+    })
   });
 
   $(".fancybox").fancybox({
