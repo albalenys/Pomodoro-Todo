@@ -4,7 +4,7 @@ class TasksController < ApplicationController
 
   def index
     @task = Task.new
-    @tasks = Task.where(user: current_user)
+    @tasks = Task.where(user: current_user).sort_by {|task| task.created_at }
   end
 
   def create
