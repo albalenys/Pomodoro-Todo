@@ -1,0 +1,24 @@
+/* line 1, /Users/Abby/Documents/Programming/Pomodoro-Todo/app/assets/stylesheets/index.scss */
+.list {
+  border-left: 5px solid #83df6d;
+  padding: 3.5em 2em 2em 6.5em;
+  background-image: url("notebook-bg.jpg");
+  background-size: cover;
+}
+
+/* line 8, /Users/Abby/Documents/Programming/Pomodoro-Todo/app/assets/stylesheets/index.scss */
+.edit-task-form, .task-options {
+  display: none;
+}
+
+/* line 12, /Users/Abby/Documents/Programming/Pomodoro-Todo/app/assets/stylesheets/index.scss */
+.notification {
+  padding: 0.5em;
+  background: #83df6d;
+  text-align: center;
+  color: #FFF;
+}
+/* line 17, /Users/Abby/Documents/Programming/Pomodoro-Todo/app/assets/stylesheets/index.scss */
+.notification h3 {
+  color: #000;
+}
