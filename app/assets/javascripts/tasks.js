@@ -1,14 +1,13 @@
 function taskAjax() {
-  $(".task").hoverIntent(
-    function(event){
+  $(".list").hoverIntent({
+    over: function(event) {
       $(event.target).find(".task-options").fadeIn(200);
     },
-    function(event){
+    out: function(event){
       $(event.target).find(".task-options").fadeOut(200);
     },
-    {
-      selector: ".list"
-    });
+    selector: ".task"
+  });
 
   $("#add-task").on("submit", "form", function(event) {
     event.preventDefault();
@@ -41,21 +40,21 @@ function taskAjax() {
     return true;
   });
 
-  $(".edit-task").click(function(event) {
+  $(".list").on("click", ".edit-task", function(event) {
     event.preventDefault();
     $.ajax({
       url: $(this).attr('action'),
       data: $(this).serialize(),
       method: $(this).attr('method')
     }).done(function(response) {
-      var editForm = $(event.target).closest("li").find(".task-form");
+      var editForm = $(event.target).closest("li").find(".edit-task-form");
       editForm.show();
       var task = $(event.target).closest("li").find(".task");
       task.hide();
     })
   });
 
-  $(".task-form").on("submit", "form", function(event) {
+  $(".list").on("submit", ".edit-task-form form", function(event) {
     event.preventDefault();
     $.ajax({
       url: $(this).attr('action'),
@@ -64,7 +63,7 @@ function taskAjax() {
     }).done(function(response) {
       var errors = handleErrors(response);
       if(!errors) {
-        var editForm = $(event.target).closest("li").find(".task-form");
+        var editForm = $(event.target).closest("li").find(".edit-task-form");
         editForm.hide();
         var task = $(event.target).closest("li").find(".task");
         var task_id = task.first().attr("id")

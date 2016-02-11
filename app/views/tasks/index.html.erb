@@ -31,7 +31,7 @@
 
       <% @tasks.each do |task|%>
         <li>
-          <div class="task-form">
+          <div class="edit-task-form">
             <%= render "form", :@task => task %>
           </div>
           <div class="task" id="<%= @task.id %>">
