@@ -10,9 +10,10 @@ Rails.application.routes.draw do
     resources :pomodoros, only: [:create, :new]
   end
 
-  resources :users, only: [:create, :new]
+  resources :users, only: [:new]
   get 'login' => 'users#login'
   delete 'logout' => 'users#logout'
   post '/auth' => 'users#auth'
+  post '/register' => 'users#register'
   get '/reset' => 'pomodoros#reset'
 end

@@ -13,9 +13,6 @@ function initFancyBox() {
           parent.$.fancybox.close();
           parent.location.reload(true);
         }
-      },
-      fail: function() {
-        alert("The request has failed.");
       }
     })
   });
