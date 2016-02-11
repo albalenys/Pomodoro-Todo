@@ -1,4 +1,4 @@
-function taskAjax() {
+function initTaskAjax() {
   $(".list").hoverIntent({
     over: function(event) {
       $(event.target).find(".task-options").fadeIn(200);

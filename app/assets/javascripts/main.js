@@ -1,7 +1,7 @@
 $(document).ready(function() {
   initFancyBox();
   initTimer();
-  taskAjax();
+  initTaskAjax();
 });
 
 function handleErrors(response) {

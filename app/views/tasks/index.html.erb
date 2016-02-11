@@ -9,46 +9,11 @@
   <% end %>
 
   <div id="errors">
-    <%= render "layouts/error" %>
+    <%= render "shared/error" %>
   </div>
 
   <p>*Hover over a task to edit, delete, or start a timer.</p>
   <h2>Todo List</h2>
-  <div class="list">
-    <ol>
-      <div id="add-task">
-        <%= render "form" %>
-      </div>
 
-      <div id="empty-list">
-        <% if @tasks.empty? %>
-          <p>
-            You currently don't have anything in your todo list.<br>
-            Start striking out your tasks and goals today!
-          </p>
-        <% end %>
-      </div>
-
-      <% @tasks.each do |task|%>
-        <li>
-          <div class="edit-task-form">
-            <%= render "form", :@task => task %>
-          </div>
-          <div class="task" id="<%= @task.id %>">
-            <%= task.text %>
-            <span class="task-options">
-              <%= link_to image_tag("edit-icon.png", class: "edit-task icon", alt: "Edit", title: "Delete"), edit_task_path(task) %>
-              <%= link_to image_tag("delete-icon.png", class: "delete-task icon", alt: "Delete", title: "Delete"), task_path(task), method: "delete", data: { remote: true } %>
-              <%= link_to image_tag("timer-icon.png", class: "icon", alt: "Timer", title: "Start Timer"), new_task_pomodoro_path(task) %>
-            </span>
-            <% task.pomodoros.each do |pomodoro|%>
-              <% if pomodoro.user == current_user %>
-                <%= image_tag("pomodoro-timer.png", class: "icon") %>
-              <% end %>
-            <% end %>
-          </div>
-        </li>
-      <% end %>
-    </ol>
-  </div>
+  <%= render "list" %>
 </main>
