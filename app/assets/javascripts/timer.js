@@ -9,12 +9,7 @@ function initTimer() {
     }
     else {
       $(".clock-info").html("<h4>Taking a break...</h4><p>You are now taking a break before continuing your work.</p>");
-      $(".clock").show();
-      $(".clock-bg").show();
-      $(".minutes").html(minutes - 1);
-      $(".seconds").html(59);
-      minTimer();
-      secTimer();
+      appendClock();
     }
   })
 
@@ -37,19 +32,20 @@ function initTimer() {
         if(minutes >= 10 && minutes <= 59) {
           message = "You gained a pomodoro!";
           $(".clock-info").html("<h4>Work in progress...</h4><p>You are working on task <em>" + task + "</em></p>");
-          $(".clock").show();
-          $(".clock-bg").show();
-          $(".minutes").html(minutes - 1);
-          $(".seconds").html(59);
-          minTimer();
-          secTimer();
+          appendClock();
         }
-      },
-      fail: function() {
-        alert("The request has failed.");
       }
     })
   });
+}
+
+function appendClock() {
+  $(".clock").show();
+  $(".clock-bg").show();
+  $(".minutes").html(minutes - 1);
+  $(".seconds").html(59);
+  minTimer();
+  secTimer();
 }
 
 function minTimer() {
