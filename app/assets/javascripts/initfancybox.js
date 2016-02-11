@@ -11,18 +11,9 @@ function initFancyBox() {
         var errors = handleErrors(response);
         if(!errors) {
           parent.$.fancybox.close();
+          parent.location.reload(true);
         }
-      },
-      fail: function() {
-        alert("The request has failed.");
       }
     })
-  });
-
-  $(".fancybox").fancybox({
-    type: 'iframe',
-    afterClose: function () {
-        parent.location.reload(true);
-    }
   });
 }
