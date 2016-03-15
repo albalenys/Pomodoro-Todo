@@ -1,3 +1,7 @@
+app.controller('tasksController', ['$scope', function($scope) {
+
+}]);
+
 function initTaskAjax() {
   $(".list").hoverIntent({
     over: function(event) {
