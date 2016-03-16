@@ -1,5 +1,10 @@
-app.controller('tasksController', ['$scope', function($scope) {
-
+app.controller('tasksController', ['$scope', '$http', function($scope, $http) {
+  $scope.delete = function(task) {
+    $http.delete('/tasks/' + task.id).success(function(response) {
+      var index = $scope.tasks.indexOf(task);
+      $scope.tasks.splice(index, 1);
+    });
+  };
 }]);
 
 function initTaskAjax() {
@@ -13,36 +18,23 @@ function initTaskAjax() {
     selector: ".task"
   });
 
-  $("#add-task").on("submit", "form", function(event) {
-    event.preventDefault();
-    $.ajax({
-      url: $(this).attr('action'),
-      data: $(this).serialize(),
-      method: $(this).attr('method')
-    }).done(function(response) {
-      var errors = handleErrors(response);
-      if(!errors) {
-        var newTask = $(response).find(".list li").last();
-        var updatedMsg = $(response).find("#empty-list");
-        $("#empty-list").html(updatedMsg);
-        $(".list ol").append(newTask[0]);
-        $("#add-task form").trigger("reset");
-      }
-    })
-  });
-
-  $(".list").on("click", ".delete-task", function(event) {
-    event.preventDefault();
-    if(!confirm("Are you sure you want to delete this task?")){
-      event.preventDefault();
-      return false;
-    }
-    $(event.target).closest("li").remove();
-    if($(".list li").length == 0) {
-      $("#empty-list").html("<p>You currently don't have anything in your todo list.<br>Start striking out your tasks and goals today!</p>");
-    }
-    return true;
-  });
+  // $("#add-task").on("submit", "form", function(event) {
+  //   event.preventDefault();
+  //   $.ajax({
+  //     url: $(this).attr('action'),
+  //     data: $(this).serialize(),
+  //     method: $(this).attr('method')
+  //   }).done(function(response) {
+  //     var errors = handleErrors(response);
+  //     if(!errors) {
+  //       var newTask = $(response).find(".list li").last();
+  //       var updatedMsg = $(response).find("#empty-list");
+  //       $("#empty-list").html(updatedMsg);
+  //       $(".list ol").append(newTask[0]);
+  //       $("#add-task form").trigger("reset");
+  //     }
+  //   })
+  // });
 
   $(".list").on("click", ".edit-task", function(event) {
     event.preventDefault();

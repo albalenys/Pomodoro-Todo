@@ -19,14 +19,12 @@
           <div class="task" id="{{ task.id }}" >
             {{ task.text }}
             <span class="task-options">
-              <a href="tasks/{{task.id}}/edit"><%= image_tag("edit-icon.png", class: "edit-task icon", alt: "Edit", title: "Delete") %></a>
-              <a href="tasks/{{task.id}}" method="delete" data={ remote: true }><%= image_tag("delete-icon.png", class: "delete-task icon", alt: "Delete", title: "Delete") %></a>
-              <a href="tasks/{{ task.id }}/pomodoros/new"><%= image_tag("timer-icon.png", class: "icon", alt: "Timer", title: "Start Timer") %></a>
+              <a ng-click="edit(task)" href="tasks/{{ task.id }}/edit"><%= image_tag("edit-icon.png", class: "edit-task icon", alt: "Edit", title: "Edit") %></a>
+              <a ng-click="delete(task)" data-confirm="Are you sure?"><%= image_tag("delete-icon.png", class: "icon", alt: "Delete", title: "Delete") %></a>
+              <a href="tasks/{{ task.id }}/pomodoros/new" data-method="post"><%= image_tag("timer-icon.png", class: "icon", alt: "Timer", title: "Start Timer") %></a>
             </span>
-            <div ng-repeat="pomodoro in task.pomodoros" ng-init="currentUser = <%= current_user.to_json %>">
-              <div ng-if="pomodoro.user == currentUser">
-                <%= image_tag("pomodoro-timer.png", class: "icon") %>
-              </div>
+            <div ng-repeat="pomodoro in task.pomodoros">
+              <%= image_tag("pomodoro-timer.png", class: "icon") %>
             </div>
           </div>
         </li>
