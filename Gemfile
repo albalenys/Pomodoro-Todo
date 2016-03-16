@@ -12,6 +12,7 @@ gem 'pry'
 gem 'fancybox2-rails', '~> 0.2.8'
 gem 'sweetalert-rails'
 gem 'rails_12factor'
+gem 'angularjs-rails'
 
 group :development, :test do
   gem 'byebug'

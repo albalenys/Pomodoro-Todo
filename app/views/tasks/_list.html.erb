@@ -1,37 +1,33 @@
-  <div class="list">
+  <div class="list" ng-controller="tasksController" ng-init="tasks=<%= @tasks.to_json %>">
     <ol>
       <div id="add-task">
         <%= render "form" %>
       </div>
 
-      <div id="empty-list">
-        <% if @tasks.empty? %>
-          <p>
-            You currently don't have anything in your todo list.<br>
-            Start striking out your tasks and goals today!
-          </p>
-        <% end %>
+      <div ng-if="tasks.length === 0" id="empty-list">
+        <p>
+          You currently don't have anything in your todo list.<br>
+          Start striking out your tasks and goals today!
+        </p>
       </div>
 
-      <% @tasks.each do |task|%>
+      <div ng-repeat="task in tasks">
         <li>
           <div class="edit-task-form">
-            <%= render "form", :@task => task %>
+            <%= render "form", :@task => @task %>
           </div>
-          <div class="task" id="<%= @task.id %>">
-            <%= task.text %>
+          <div class="task" id="{{ task.id }}" >
+            {{ task.text }}
             <span class="task-options">
-              <%= link_to image_tag("edit-icon.png", class: "edit-task icon", alt: "Edit", title: "Delete"), edit_task_path(task) %>
-              <%= link_to image_tag("delete-icon.png", class: "delete-task icon", alt: "Delete", title: "Delete"), task_path(task), method: "delete", data: { remote: true } %>
-              <%= link_to image_tag("timer-icon.png", class: "icon", alt: "Timer", title: "Start Timer"), new_task_pomodoro_path(task) %>
+              <a ng-click="edit(task)" href="tasks/{{ task.id }}/edit"><%= image_tag("edit-icon.png", class: "edit-task icon", alt: "Edit", title: "Edit") %></a>
+              <a ng-click="delete(task)" data-confirm="Are you sure?"><%= image_tag("delete-icon.png", class: "icon", alt: "Delete", title: "Delete") %></a>
+              <a href="tasks/{{ task.id }}/pomodoros/new" data-method="post"><%= image_tag("timer-icon.png", class: "icon", alt: "Timer", title: "Start Timer") %></a>
             </span>
-            <% task.pomodoros.each do |pomodoro|%>
-              <% if pomodoro.user == current_user %>
-                <%= image_tag("pomodoro-timer.png", class: "icon") %>
-              <% end %>
-            <% end %>
+            <div ng-repeat="pomodoro in task.pomodoros">
+              <%= image_tag("pomodoro-timer.png", class: "icon") %>
+            </div>
           </div>
         </li>
-      <% end %>
+      </div>
     </ol>
   </div>

@@ -27,9 +27,8 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    if @task.destroy
-      redirect_to root_path
-    end
+    @task.destroy
+    render json: @task
   end
 
   private
